@@ -1,0 +1,3 @@
+import type { ButtonHTMLAttributes, PropsWithChildren } from 'react';
+type Props=PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>&{variant?:'primary'|'soft'|'ghost'}>;
+export const Button=({children,variant='primary',className='',...props}:Props)=>{const styles={primary:'bg-slate-800 text-white shadow-lg shadow-sky-200/50 hover:bg-slate-700',soft:'bg-white/80 text-slate-800 border border-white shadow',ghost:'bg-transparent text-slate-700 hover:bg-white/50'};return <button className={`min-h-12 rounded-2xl px-5 py-3 text-base font-bold transition focus:outline-none focus:ring-4 focus:ring-sky-200 disabled:opacity-50 ${styles[variant]} ${className}`} {...props}>{children}</button>};
