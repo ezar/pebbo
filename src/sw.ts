@@ -1,0 +1,6 @@
+/// <reference lib="webworker" />
+import { clientsClaim } from 'workbox-core';import { precacheAndRoute, cleanupOutdatedCaches } from 'workbox-precaching';import { NavigationRoute, registerRoute } from 'workbox-routing';import { createHandlerBoundToURL } from 'workbox-precaching';
+declare let self:ServiceWorkerGlobalScope & {__WB_MANIFEST: Array<{url:string;revision:string|null}>};
+clientsClaim();self.skipWaiting();cleanupOutdatedCaches();precacheAndRoute(self.__WB_MANIFEST);registerRoute(new NavigationRoute(createHandlerBoundToURL('/index.html')));
+self.addEventListener('push',(event)=>{const data=event.data?.json?.() as {title?:string;body?:string;url?:string}|undefined;event.waitUntil(self.registration.showNotification(data?.title??'Pebbo necesita mimo',{body:data?.body??'Pasa un momento a saludar a tu Pebbo.',icon:'/icons/pwa-192.svg',badge:'/icons/pwa-192.svg',data:{url:data?.url??'/'}}));});
+self.addEventListener('notificationclick',(event)=>{event.notification.close();const url=(event.notification.data as {url?:string}|undefined)?.url??'/';event.waitUntil(self.clients.matchAll({type:'window',includeUncontrolled:true}).then(clients=>{const found=clients.find(c=>'focus'in c);if(found)return found.focus();return self.clients.openWindow(url);}));});

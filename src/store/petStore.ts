@@ -1,0 +1,3 @@
+import { create } from 'zustand';import { persist } from 'zustand/middleware';import { applyPetAction, createPet, evolvePet } from '../engine/petEngine';import type { Pet, PetAction } from '../types/pet';
+type PetState={pet:Pet|null;createNewPet:(name:string,variantId:string,colorId:string)=>void;syncTime:()=>void;performAction:(action:PetAction)=>void;resetPet:()=>void};
+export const usePetStore=create<PetState>()(persist((set,get)=>({pet:null,createNewPet:(name,variantId,colorId)=>set({pet:createPet(name,variantId,colorId)}),syncTime:()=>set({pet:get().pet?evolvePet(get().pet!):null}),performAction:(action)=>set({pet:get().pet?applyPetAction(get().pet!,action):null}),resetPet:()=>set({pet:null})}),{name:'pebbo-pet-v1'}));

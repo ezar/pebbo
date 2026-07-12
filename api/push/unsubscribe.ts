@@ -1,0 +1,2 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+export default function handler(req:VercelRequest,res:VercelResponse){if(req.method!=='POST')return res.status(405).json({error:'method_not_allowed'});const endpoint=(req.body as {endpoint?:unknown})?.endpoint;if(typeof endpoint!=='string'||!endpoint.startsWith('http'))return res.status(400).json({error:'invalid_endpoint'});return res.status(202).json({ok:true,message:'Endpoint validated. Remove it from production storage when available.'});}

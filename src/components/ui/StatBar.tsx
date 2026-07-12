@@ -1,0 +1,2 @@
+import { statusLabel } from '../../utils/format';
+export const StatBar=({label,value}:{label:string;value:number})=><div className="rounded-2xl bg-white/75 p-3 shadow-sm"><div className="mb-1 flex justify-between text-sm font-bold text-slate-700"><span>{label}</span><span>{statusLabel(value)}</span></div><div className="h-3 overflow-hidden rounded-full bg-slate-100"><div className="h-full rounded-full bg-gradient-to-r from-sky-300 to-emerald-300" style={{width:`${value}%`}} /></div></div>;
