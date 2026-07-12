@@ -1,0 +1,2 @@
+export type NotificationSupport={supported:boolean;reason?:string};
+export const getNotificationSupport=(env:Pick<typeof globalThis,'navigator'>=globalThis):NotificationSupport=>{const nav=env.navigator; if(typeof window==='undefined')return{supported:false,reason:'Sin navegador'}; if(!('Notification'in window))return{supported:false,reason:'Notification no disponible'}; if(!nav.serviceWorker)return{supported:false,reason:'Service Worker no disponible'}; if(!('PushManager'in window))return{supported:false,reason:'PushManager no disponible'}; return{supported:true};};
