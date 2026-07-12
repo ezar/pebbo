@@ -1,0 +1,2 @@
+import { render, screen } from '@testing-library/react';import userEvent from '@testing-library/user-event';import { describe, expect, it, vi } from 'vitest';import { CreatePetScreen } from './CreatePetScreen';
+describe('CreatePetScreen',()=>{it('permite crear mascota',async()=>{const done=vi.fn();render(<CreatePetScreen onDone={done}/>);await userEvent.click(screen.getByRole('button',{name:/empezar/i}));expect(done).toHaveBeenCalled();});});
