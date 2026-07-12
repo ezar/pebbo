@@ -1,0 +1,2 @@
+import { Button } from '../components/ui/Button';
+export const WelcomeScreen=({onStart}:{onStart:()=>void})=><section className="flex min-h-[80dvh] flex-col items-center justify-center text-center"><div className="mb-8 rounded-[2rem] bg-white/70 p-8 shadow-xl"><p className="text-6xl">🫧</p><h1 className="mt-3 text-5xl font-black text-slate-800">Pebbo</h1><p className="mt-3 max-w-sm text-lg font-semibold text-slate-600">Una mascota suave, curiosa y siempre recuperable.</p></div><Button onClick={onStart}>Crear mi Pebbo</Button></section>;

@@ -1,0 +1,2 @@
+import { useEffect } from 'react';import { usePetStore } from '../store/petStore';
+export const usePeriodicPetSync=()=>{const syncTime=usePetStore(s=>s.syncTime);useEffect(()=>{syncTime();const onFocus=()=>syncTime();window.addEventListener('focus',onFocus);const id=window.setInterval(syncTime,30_000);return()=>{window.removeEventListener('focus',onFocus);window.clearInterval(id);};},[syncTime]);};

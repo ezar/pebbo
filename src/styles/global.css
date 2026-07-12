@@ -1,0 +1,2 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+:root{font-family:Nunito,ui-sans-serif,system-ui;color:#334155;background:#fff7ed}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
