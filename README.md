@@ -8,7 +8,7 @@ Capturas pendientes para la siguiente iteración. Ejecuta `npm run dev` y abre l
 
 ## Stack
 
-React, TypeScript estricto, Vite, Tailwind CSS, Zustand con `persist`, IndexedDB auxiliar, Framer Motion, Vitest, Testing Library, ESLint, `vite-plugin-pwa`/Workbox y funciones serverless de Vercel en `/api`.
+React, TypeScript estricto, Vite, Tailwind CSS, Zustand con `persist`, IndexedDB auxiliar, Framer Motion, Vitest, Testing Library, ESLint, `vite-plugin-pwa`/Workbox y funciones serverless de Vercel en `/api`. Las dependencias están fijadas con rangos compatibles para evitar resolver TypeScript `latest` incompatible con `typescript-eslint`.
 
 ## Arquitectura
 
