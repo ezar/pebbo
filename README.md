@@ -36,6 +36,8 @@ La app detecta compatibilidad antes de mostrar acciones. El permiso se pide úni
 Copia `.env.example` a `.env.local` si necesitas personalizar:
 
 - `VITE_PEBBO_TIME_SCALE`: escala temporal de desarrollo.
+- `VITE_STATIC_HOSTING`: `true` cuando se publica en GitHub Pages u otro hosting sin backend.
+- `VITE_PUSH_API_BASE_URL`: origen externo opcional para APIs push si el frontend vive en hosting estático.
 - `VITE_VAPID_PUBLIC_KEY`: clave pública VAPID para el cliente.
 - `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`: backend push; no incluir secretos en el cliente.
 
@@ -55,9 +57,13 @@ npm run test
 npm run build
 ```
 
+## Despliegue en GitHub Pages
+
+Esta versión puede publicarse temporalmente como sitio estático en GitHub Pages mediante `.github/workflows/deploy-pages.yml`. El workflow usa Node 24, instala dependencias con `npm install`, compila `dist` con `GITHUB_PAGES=true` y `VITE_STATIC_HOSTING=true`, ajustando el `base` de Vite al nombre del repositorio y desactivando las llamadas al backend push durante el hosting estático. Consulta `docs/github-pages.md`.
+
 ## Despliegue en Vercel
 
-Vercel detecta Vite automáticamente. `vercel.json` reescribe rutas SPA a `index.html`, mantiene `/api/*` para funciones y añade cabeceras para manifest y service worker. Las previews de pull request funcionan con la integración estándar de Vercel conectada al repositorio.
+Vercel sigue siendo la opción recomendada para la fase con Web Push real. `vercel.json` reescribe rutas SPA a `index.html`, mantiene `/api/*` para funciones y añade cabeceras para manifest y service worker. Las previews de pull request funcionan con la integración estándar de Vercel conectada al repositorio.
 
 ## Privacidad
 

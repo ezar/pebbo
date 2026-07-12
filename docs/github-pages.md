@@ -22,7 +22,7 @@ En el workflow de Pages se define `VITE_STATIC_HOSTING=true` para evitar llamada
 
 ## Configuración
 
-El workflow `.github/workflows/deploy-pages.yml` construye la app con:
+El workflow `.github/workflows/deploy-pages.yml` usa Node 24, instala dependencias con `npm install` porque el repositorio todavía no incluye `package-lock.json`, y construye la app con:
 
 ```bash
 GITHUB_PAGES=true VITE_STATIC_HOSTING=true npm run build
